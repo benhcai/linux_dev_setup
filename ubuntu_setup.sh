@@ -39,6 +39,11 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash 
 source ~/.bashrc && \
 printC "Installing node... \n" $CYAN && \
 nvm install node  && \
+\
+printC "Installing yarn... \n" $CYAN && \
+npm install --global yarn && \
+yarn --version && \
+\
 printC "Installing snapd... \n" $CYAN && \
 sudo apt install snapd && \
 printC "Installing vscode... \n" $CYAN && \
