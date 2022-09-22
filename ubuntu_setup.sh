@@ -25,34 +25,41 @@ echo "set bell-style none" | sudo tee -a /etc/inputrc > /dev/null
 export LESS="$LESS -Q"
 
 ## Main apps
-printC "Updating and installing apps \n" $CYAN
+printC "Updating and installing apps... \n" $CYAN && \
 sudo apt update && \
 sudo apt upgrade && \
-printC "Installing git \n" $CYAN && \
+printC "Installing git... \n" $CYAN && \
 sudo apt install git
-printC "Installing gh \n" $CYAN && \
+printC "Installing gh... \n" $CYAN && \
 sudo apt install gh
-printC "Installing neovin \n" $CYAN && \
+printC "Installing neovin... \n" $CYAN && \
 sudo apt install neovim
-printC "Installing snapd \n" $CYAN && \
+printC "Installing snapd... \n" $CYAN && \
 sudo apt install snapd && \
 sudo snap install code --classic && \
 \
 ## Setup Git
-printC "Setting up Git \n" $CYAN
+printC "Setting up Git... \n" $CYAN
 printC "Enter Git name: " $BLUE
 read gitName && \
 git config --global user.name "$gitName" && \
 printC "Enter Git email: " $BLUE
 read gitEmail && \
 git config --global user.email "$gitEmail" && \
-printC "Git configured for $gitName, $gitEmail" $GREEN && \
+printC "Git configured for $gitName, $gitEmail \n" $GREEN && \
+\
+## Setup gh
+printC "Setting up gh auth... \n" $CYAN
+gh auth login && \
 \
 ## Install and setup docker
+printC "Removing old Docker files... \n" $CYAN && \
 sudo apt-get remove docker docker-engine docker.io containerd runc ; \
+printC "Installing Docker Engine, containerd and Compose... \n" $CYAN
 sudo apt-get update && \
 sudo apt-get install ca-certificates curl gnupg lsb-release && \
 sudo mkdir -p /etc/apt/keyrings && \
+sudo rm -f /etc/apt/keyrings/docker.gpg && \
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg && \
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
@@ -62,22 +69,35 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 sudo service docker start && \
 sudo groupadd docker && \
 sudo usermod -aG docker $USER && \
-newgrp docker && \
+newgrp docker ; \
 sudo systemctl enable docker.service && \
 sudo systemctl enable containerd.service && \
-sudo echo {"log-driver": "json-file", "log-opts": {"max-size": "10m", "max-file": "3"}} >> /etc/docker/daemon.json && \
-## Configuring remote access with systemd unit file
+printC "Docker and Containerd enabled. \n" $GREEN && \
+printC "Configuring log rotation... \n" $BLUE && \
+(cat << EOF | sudo tee /etc/docker/daemon.json
+{
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "10m",
+    "max-file": "3" 
+  }
+}
+EOF
+) > /dev/null && \
 ## Manual systemd edit docker.service
-mkdir /etc/systemd/system/docker.service.d/
-touch /etc/systemd/system/docker.service.d/override.conf
-# cat << EOF "[Service]\nExecStart=\nExecStart=/usr/bin/dockerd -H fd:// -H tcp://127.0.0.1:2375" | sudo tee -a /etc/inputrc"
-cat << EOF >> /etc/systemd/system/docker.service.d/override.conf
+printC "Configuring remote access with systemd unit file... \n" $BLUE && \
+sudo mkdir -p /etc/systemd/system/docker.service.d/ && \
+sudo touch /etc/systemd/system/docker.service.d/override.conf && \
+(cat << EOF | sudo tee /etc/systemd/system/docker.service.d/override.conf
 [Service]
 ExecStart=
 ExecStart=/usr/bin/dockerd -H fd:// -H tcp://127.0.0.1:2375
-EOF && \
+EOF
+) > /dev/null && \
 sudo systemctl daemon-reload && \
-sudo systemctl restart docker.service && \
+sudo systemctl restart docker.service
+printC "Installing net-tools... \n" $CYAN && \
 sudo apt install net-tools && \
+printC "Dockerd netstat status: \n" $BLUE && \
 sudo netstat -lntp | grep dockerd
-
+printC "Setup complete. \n" $GREEN
