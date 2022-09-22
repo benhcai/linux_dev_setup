@@ -42,6 +42,7 @@ nvm install node  && \
 \
 printC "Installing yarn... \n" $CYAN && \
 npm install --global yarn && \
+printC "Installed yarn version: " $GREEN && \
 yarn --version && \
 \
 printC "Installing snapd... \n" $CYAN && \
