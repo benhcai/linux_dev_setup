@@ -13,31 +13,38 @@ CYAN='\033[0;36m'
 NC='\033[0m'
 
 function printC {
-    echo -ne $2$1$NC 
+    local STR=$1
+    local COLOR=$2
+    echo -ne $COLOR$STR$NC 
 }
 
 # Configs
 ## Turn off terminal bell
-echo "set bell-style none" | sudo tee -a /etc/inputrc
+echo "set bell-style none" | sudo tee -a /etc/inputrc > /dev/null
 ## Turn off LESS (man) bell
 export LESS="$LESS -Q"
 
 ## Main apps
-printC "Updating and installing apps" $BLUE
+printC "Updating and installing apps \n" $CYAN
 sudo apt update && \
 sudo apt upgrade && \
-printC "Installing git" $BLUE && \
+printC "Installing git \n" $CYAN && \
 sudo apt install git
+printC "Installing neovin \n" $CYAN && \
 sudo apt install neovim
+printC "Installing snapd \n" $CYAN && \
 sudo apt install snapd && \
 sudo snap install code --classic && \
 \
 ## Setup Git
-read "Enter Git name: " gitName && \
+printC "Setting up Git \n" $CYAN
+printC "Enter Git name: " $BLUE
+read gitName && \
 git config --global user.name "$gitName" && \
-read "Enter Git email: " gitEmail && \
+printC "Enter Git email: " $BLUE
+read gitEmail && \
 git config --global user.email "$gitEmail" && \
-echo "Git configured for $gitName, $gitEmail" \
+printC "Git configured for $gitName, $gitEmail" $GREEN && \
 \
 ## Install and setup docker
 sudo apt-get remove docker docker-engine docker.io containerd runc ; \
