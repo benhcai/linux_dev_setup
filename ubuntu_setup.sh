@@ -33,10 +33,20 @@ sudo apt install git
 printC "Installing gh... \n" $CYAN && \
 sudo apt install gh
 printC "Installing neovin... \n" $CYAN && \
-sudo apt install neovim
+sudo apt install neovim && \
+printC "Installing NVM... \n" $CYAN && \
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash && \
+source ~/.bashrc && \
+printC "Installing node... \n" $CYAN && \
+nvm install node  && \
 printC "Installing snapd... \n" $CYAN && \
 sudo apt install snapd && \
+printC "Installing vscode... \n" $CYAN && \
 sudo snap install code --classic && \
+printC "Installing notion... \n" $CYAN && \
+sudo snap install notion-snap
+printC "Installing zoom-client... \n" $CYAN && \
+sudo snap install zoom-client && \
 \
 ## Setup Git
 printC "Setting up Git... \n" $CYAN
