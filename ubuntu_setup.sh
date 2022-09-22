@@ -45,6 +45,9 @@ npm install --global yarn && \
 printC "Installed yarn version: " $GREEN && \
 yarn --version && \
 \
+printC "Installing tsc... \n" $CYAN && \
+sudo apt install node-typescript && \
+\
 printC "Installing snapd... \n" $CYAN && \
 sudo apt install snapd && \
 printC "Installing vscode... \n" $CYAN && \
