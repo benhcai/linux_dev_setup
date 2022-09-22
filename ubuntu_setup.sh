@@ -11,7 +11,6 @@ GREEN='\033[0;32m'
 BLUE='\033[0;94m'
 CYAN='\033[0;36m'
 NC='\033[0m'
-# TEST
 
 function printC {
     local STR=$1
