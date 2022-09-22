@@ -30,6 +30,8 @@ sudo apt update && \
 sudo apt upgrade && \
 printC "Installing git \n" $CYAN && \
 sudo apt install git
+printC "Installing gh \n" $CYAN && \
+sudo apt install gh
 printC "Installing neovin \n" $CYAN && \
 sudo apt install neovim
 printC "Installing snapd \n" $CYAN && \
