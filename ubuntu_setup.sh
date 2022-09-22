@@ -55,7 +55,8 @@ gh auth login && \
 ## Install and setup docker
 printC "Removing old Docker files... \n" $CYAN && \
 sudo apt-get remove docker docker-engine docker.io containerd runc ; \
-printC "Installing Docker Engine, containerd and Compose... \n" $CYAN
+printC "Installing Docker Engine, containerd and Compose... \n" $CYAN && \
+printC "Installing using the repository and verifying... \n" $BLUE && \
 sudo apt-get update && \
 sudo apt-get install ca-certificates curl gnupg lsb-release && \
 sudo mkdir -p /etc/apt/keyrings && \
@@ -64,6 +65,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null && \
+printC "Installing docker files... \n" $BLUE && \
 sudo apt-get update && \
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin && \
 sudo service docker start && \
