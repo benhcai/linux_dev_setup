@@ -3,6 +3,18 @@
 # A post-install script for Ubuntu to install developer tools
 # To download the file, run:
 # curl -LO https://raw.githubusercontent.com/code0312/linux_dev_setup/main/ubuntu_setup.sh
+# Give execution access with:
+# chmod +x ubuntu_setup.sh
+
+# Constants
+GREEN='\033[0;32m'
+BLUE='\033[0;94m'
+CYAN='\033[0;36m'
+NC='\033[0m'
+
+function printC {
+    echo -ne $2$1$NC 
+}
 
 # Configs
 ## Turn off terminal bell
@@ -11,9 +23,13 @@ echo "set bell-style none" | sudo tee -a /etc/inputrc
 export LESS="$LESS -Q"
 
 ## Main apps
+printC "Updating and installing apps" $BLUE
 sudo apt update && \
 sudo apt upgrade && \
-sudo apt install git neovim snapd && \
+printC "Installing git" $BLUE && \
+sudo apt install git
+sudo apt install neovim
+sudo apt install snapd && \
 sudo snap install code --classic && \
 \
 ## Setup Git
