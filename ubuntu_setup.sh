@@ -32,13 +32,20 @@ printC "Installing git... \n" $CYAN && \
 sudo apt install git
 printC "Installing gh... \n" $CYAN && \
 sudo apt install gh
-printC "Installing neovin... \n" $CYAN && \
+printC "Installing neovim... \n" $CYAN && \
 sudo apt install neovim && \
+printC "Removing existing NVM and Node... \n" $CYAN && \
+rm -Rf ~/.npm ~/.nvm && \
 printC "Installing NVM... \n" $CYAN && \
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash && \
 source ~/.bashrc && \
+export NVM_DIR="$HOME/.nvm" && \
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && \
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" && \
 printC "Installing node... \n" $CYAN && \
 nvm install node  && \
+printC "Installing npm... \n" $CYAN && \
+sudo apt install npm  && \
 \
 printC "Installing yarn... \n" $CYAN && \
 npm install --global yarn && \
@@ -56,6 +63,10 @@ printC "Installing notion... \n" $CYAN && \
 sudo snap install notion-snap
 printC "Installing zoom-client... \n" $CYAN && \
 sudo snap install zoom-client && \
+printC "Installing slack... \n" $CYAN && \
+sudo snap install slack && \
+printC "Installing figma... \n" $CYAN && \
+sudo snap install figma-linux && \
 \
 ## Setup Git
 printC "Setting up Git... \n" $CYAN
