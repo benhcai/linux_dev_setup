@@ -44,8 +44,6 @@ export NVM_DIR="$HOME/.nvm" && \
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" && \
 printC "Installing node... \n" $CYAN && \
 nvm install node  && \
-printC "Installing npm... \n" $CYAN && \
-sudo apt install npm  && \
 \
 printC "Installing yarn... \n" $CYAN && \
 npm install --global yarn && \
