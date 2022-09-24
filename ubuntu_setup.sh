@@ -61,12 +61,6 @@ printC "Installing zoom-client... \n" $CYAN && \
 sudo snap install zoom-client && \
 printC "Installing slack... \n" $CYAN && \
 sudo snap install slack && \
-printC "Installing figma... \n" $CYAN && \
-sudo snap install figma-linux && \
-sudo ln -s $HOME/.local/share/fonts $HOME/snap/figma-linux/current/.local/share/ && \ # Install fonts manually for snap figma
-printC "Installing chromium... \n" $CYAN && \
-sudo apt install chromium-browser && \
-
 \
 ## Setup Git
 printC "Setting up Git... \n" $CYAN
