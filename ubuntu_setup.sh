@@ -1,10 +1,13 @@
 #!/bin/bash
-
-# A post-install script for Ubuntu to install developer tools
-# To download the file, run:
-# curl -LO https://raw.githubusercontent.com/code0312/linux_dev_setup/main/ubuntu_setup.sh
-# Give execution access with:
-# chmod +x ubuntu_setup.sh
+'
+A post-install script for Ubuntu to install developer tools
+To download the file, run:
+sudo apt update && \
+sudo apt upgrade && \
+sudo apt install curl && \
+curl -LO https://raw.githubusercontent.com/code0312/linux_dev_setup/main/ubuntu_setup.sh && \
+chmod +x ubuntu_setup.sh
+'
 
 # Constants
 GREEN='\033[0;32m'
