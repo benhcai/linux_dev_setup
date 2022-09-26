@@ -58,12 +58,14 @@ printC "Installing snapd... \n" $CYAN && \
 sudo apt install snapd && \
 printC "Installing vscode... \n" $CYAN && \
 sudo snap install code --classic && \
+'
 printC "Installing notion... \n" $CYAN && \
 sudo snap install notion-snap
 printC "Installing zoom-client... \n" $CYAN && \
 sudo snap install zoom-client && \
 printC "Installing slack... \n" $CYAN && \
 sudo snap install slack && \
+'
 \
 ## Setup Git
 printC "Setting up Git... \n" $CYAN
