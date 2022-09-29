@@ -1,5 +1,5 @@
 #!/bin/bash
-'
+:'
 A post-install script for Ubuntu to install developer tools
 To download the file, run:
 sudo apt update && \
@@ -41,8 +41,9 @@ printC "Removing existing NVM and Node... \n" $CYAN && \
 rm -Rf ~/.npm ~/.nvm && \
 printC "Installing NVM... \n" $CYAN && \
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash && \
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")" && \
+sudo [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+sudo [ -s "$NVM_DIR/nvm.sh" ] && \. ~/.nvm/nvm.sh && \
 printC "Installing node... \n" $CYAN && \
 nvm install node  && \
 \
