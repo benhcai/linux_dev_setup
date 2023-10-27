@@ -28,64 +28,109 @@ echo "set bell-style none" | sudo tee -a /etc/inputrc > /dev/null
 export LESS="$LESS -Q"
 
 ## Main apps
+
 printC "Updating and installing apps... \n" $CYAN && \
 sudo apt update && \
 sudo apt upgrade && \
+
 printC "Installing git... \n" $CYAN && \
 sudo apt install git
+
 printC "Installing gh... \n" $CYAN && \
 sudo apt install gh
+
 printC "Installing neovim... \n" $CYAN && \
-sudo apt install neovim && \
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage && \
+chmod u+x nvim.appimage && \
+./nvim.appimage --appimage-extract && \
+./squashfs-root/AppRun --version && \
+### Optional: exposing nvim globally.
+sudo mv squashfs-root / && \
+sudo ln -s /squashfs-root/AppRun /usr/bin/nvim && \
+
+printC "Installing NvChad..." $CYAN && \
+printC "Installing font..." $BLUE && \
+curl -OJ https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip && \
+unzip -d FiraCode ./FiraCode.zip && \
+mkdir -p ~/.local/share/fonts && \
+cp ./FiraCode/FiraCodeNerdFont-Regular.ttf ~/.local/share/fonts && \
+fc-cache -f && \
+fc-list | grep FiraCode && \
+printC "Installing ripgrep (for telescop)" $BLUE && \
+sudo apt-get install ripgrep && \
+printC "Removing old nvim files" $BLUE && \
+rm -rf ~/.config/nvim && \
+rm -rf ~/.local/share/nvim && \
+printC "Cloning NvChad repo" $BLUE && \
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && \
+
 printC "Removing existing NVM and Node... \n" $CYAN && \
 rm -Rf ~/.npm ~/.nvm && \
+
 printC "Installing NVM... \n" $CYAN && \
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash && \
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")" && \
 sudo [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 sudo [ -s "$NVM_DIR/nvm.sh" ] && \. ~/.nvm/nvm.sh && \
+
 printC "Installing node... \n" $CYAN && \
 nvm install node  && \
 \
+
 printC "Installing yarn... \n" $CYAN && \
 npm install --global yarn && \
+
 printC "Installed yarn version: " $GREEN && \
 yarn --version && \
 \
+
 printC "Installing tsc... \n" $CYAN && \
 sudo apt install node-typescript && \
 \
+
 printC "Installing snapd... \n" $CYAN && \
 sudo apt install snapd && \
+
 printC "Installing vscode... \n" $CYAN && \
 sudo snap install code --classic && \
 '
+
 printC "Installing notion... \n" $CYAN && \
 sudo snap install notion-snap
+
 printC "Installing zoom-client... \n" $CYAN && \
 sudo snap install zoom-client && \
+
 printC "Installing slack... \n" $CYAN && \
 sudo snap install slack && \
 '
 \
 ## Setup Git
+
 printC "Setting up Git... \n" $CYAN
+
 printC "Enter Git name: " $BLUE
 read gitName && \
 git config --global user.name "$gitName" && \
+
 printC "Enter Git email: " $BLUE
 read gitEmail && \
 git config --global user.email "$gitEmail" && \
+
 printC "Git configured for $gitName, $gitEmail \n" $GREEN && \
 \
 ## Setup gh
+
 printC "Setting up gh auth... \n" $CYAN
 gh auth login && \
 \
 ## Install and setup docker
+
 printC "Removing old Docker files... \n" $CYAN && \
 sudo apt-get remove docker docker-engine docker.io containerd runc ; \
+
 printC "Installing Docker Engine, containerd and Compose... \n" $CYAN && \
+
 printC "Installing using the repository and verifying... \n" $BLUE && \
 sudo apt-get update && \
 sudo apt-get install ca-certificates curl gnupg lsb-release && \
@@ -95,6 +140,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null && \
+
 printC "Installing docker files... \n" $BLUE && \
 sudo apt-get update && \
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin && \
@@ -104,7 +150,9 @@ sudo usermod -aG docker $USER && \
 newgrp docker ; \
 sudo systemctl enable docker.service && \
 sudo systemctl enable containerd.service && \
+
 printC "Docker and Containerd enabled. \n" $GREEN && \
+
 printC "Configuring log rotation... \n" $BLUE && \
 (cat << EOF | sudo tee /etc/docker/daemon.json
 {
@@ -117,6 +165,7 @@ printC "Configuring log rotation... \n" $BLUE && \
 EOF
 ) > /dev/null && \
 ## Manual systemd edit docker.service
+
 printC "Configuring remote access with systemd unit file... \n" $BLUE && \
 sudo mkdir -p /etc/systemd/system/docker.service.d/ && \
 sudo touch /etc/systemd/system/docker.service.d/override.conf && \
@@ -128,8 +177,14 @@ EOF
 ) > /dev/null && \
 sudo systemctl daemon-reload && \
 sudo systemctl restart docker.service
+
 printC "Installing net-tools... \n" $CYAN && \
 sudo apt install net-tools && \
+
 printC "Dockerd netstat status: \n" $BLUE && \
 sudo netstat -lntp | grep dockerd
+
+printC "Set executable permissions on additionals script \n" $CYAN && \
+chmod +x ./install_additionals.sh
+
 printC "Setup complete. \n" $GREEN
