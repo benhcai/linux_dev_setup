@@ -9,7 +9,7 @@ curl -LO https://raw.githubusercontent.com/code0312/linux_dev_setup/main/ubuntu_
 chmod +x ubuntu_setup.sh
 '
 
-# Constants
+# Constants 
 GREEN='\033[0;32m'
 BLUE='\033[0;94m'
 CYAN='\033[0;36m'
