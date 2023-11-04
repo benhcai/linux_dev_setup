@@ -47,6 +47,8 @@ chmod u+x nvim.appimage && \
 ### Optional: exposing nvim globally.
 sudo mv squashfs-root / && \
 sudo ln -s /squashfs-root/AppRun /usr/bin/nvim && \
+printC "Cleaning up... \n" $CYAN && \
+rm -rf FiraCode FiraCode.zip squashfs-root nvim.appimage && \
 
 printC "Removing existing NVM and Node... \n" $CYAN && \
 rm -Rf ~/.npm ~/.nvm && \
