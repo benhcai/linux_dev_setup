@@ -2,6 +2,17 @@
 
 source ./printC.sh
 
+## Install NvChad
+
+read -p "Install NvChad? (y/N): " res
+if [[ $res = "y" ]]; then
+  printC "Installing NvChad... \n" $CYAN && \
+  source ./install_nvchad.sh 
+else
+  echo $res;
+  printC "Skipping NvChad... \n" $CYAN
+fi
+
 ## Install and setup docker
 
 read -p "Install docker? (y/N): " res
