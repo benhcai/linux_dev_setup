@@ -49,48 +49,35 @@ sudo mv squashfs-root / && \
 sudo ln -s /squashfs-root/AppRun /usr/bin/nvim && \
 printC "Cleaning up... \n" $CYAN && \
 rm -rf FiraCode FiraCode.zip squashfs-root nvim.appimage && \
-
+\
 printC "Removing existing NVM and Node... \n" $CYAN && \
 rm -Rf ~/.npm ~/.nvm && \
-
+\
 printC "Installing NVM... \n" $CYAN && \
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash && \
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")" && \
 sudo [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 sudo [ -s "$NVM_DIR/nvm.sh" ] && \. ~/.nvm/nvm.sh && \
-
+\
 printC "Installing node... \n" $CYAN && \
 nvm install node  && \
 \
-
 printC "Installing yarn... \n" $CYAN && \
 npm install --global yarn && \
-
+\
 printC "Installed yarn version: " $GREEN && \
 yarn --version && \
 \
-
 printC "Installing tsc... \n" $CYAN && \
 sudo apt install node-typescript && \
 \
-
 printC "Installing snapd... \n" $CYAN && \
 sudo apt install snapd && \
-
+\
 printC "Installing vscode... \n" $CYAN && \
 sudo snap install code --classic && \
-'
 
-printC "Installing notion... \n" $CYAN && \
-sudo snap install notion-snap
 
-printC "Installing zoom-client... \n" $CYAN && \
-sudo snap install zoom-client && \
-
-printC "Installing slack... \n" $CYAN && \
-sudo snap install slack && \
-'
-\
 ## Setup Git
 
 printC "Setting up Git... \n" $CYAN

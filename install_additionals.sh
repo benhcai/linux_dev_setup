@@ -43,4 +43,19 @@ else
   printC "Skipping MongoDb... \n" $CYAN
 fi
 
+# Install Snap apps
+read -p "Install Snap apps? (y/N): " res
+if [[ $res != "y"]];
+  exit 1
+fi
+
+printC "Installing notion... \n" $CYAN && \
+sudo snap install notion-snap
+
+printC "Installing zoom-client... \n" $CYAN && \
+sudo snap install zoom-client && \
+
+printC "Installing slack... \n" $CYAN && \
+sudo snap install slack && \
+
 printC "End of additional installs \n" $CYAN
