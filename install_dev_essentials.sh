@@ -2,7 +2,7 @@
 :'
 A post-install script for Ubuntu to install developer tools
 To download the file, run:
-wget https://raw.githubusercontent.com/code0312/linux_dev_setup/main/ubuntu_setup.sh && \
+wget https://raw.githubusercontent.com/benhcai/linux_dev_setup/main/install_dev_essentials.sh && \
 chmod +x ubuntu_setup.sh
 '
 
