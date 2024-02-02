@@ -9,17 +9,8 @@ chmod +x ubuntu_setup.sh
 # Exit if any command fails
 set -e
 
-# Constants 
-GREEN='\033[0;32m'
-BLUE='\033[0;94m'
-CYAN='\033[0;36m'
-NC='\033[0m'
-
-function printC {
-    local STR=$1
-    local COLOR=$2
-    echo -ne $COLOR$STR$NC 
-}
+# Import colour echo
+source printC.sh
 
 # Configs
 ## Turn off terminal bell
@@ -51,16 +42,8 @@ sudo mv squashfs-root / && \
 sudo ln -s /squashfs-root/AppRun /usr/bin/nvim && \
 printC "Cleaning up... \n" $CYAN && \
 rm -rf FiraCode FiraCode.zip squashfs-root nvim.appimage
-
-printC "Removing existing NVM and Node... \n" $CYAN && \
-rm -Rf ~/.npm ~/.nvm && \
-printC "Installing NVM... \n" $CYAN && \
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash && \
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")" && \
-sudo [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-sudo [ -s "$NVM_DIR/nvm.sh" ] && \. ~/.nvm/nvm.sh && \
-printC "Installing node... \n" $CYAN && \
-nvm install node  && \
+# Install node, nvm, npm
+source ./install_node.sh && \
 printC "Installing yarn... \n" $CYAN && \
 npm install --global yarn && \
 printC "Installed yarn version: " $GREEN && \

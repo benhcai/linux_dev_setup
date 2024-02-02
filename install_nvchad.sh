@@ -38,4 +38,7 @@ rm -rf ~/.local/share/nvim && \
 printC "Cloning NvChad repo\n" $BLUE && \
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 
-printC "Installed NvChad\n" $BLUE
+printC "Cleaning up... \n" $CYAN && \
+rm -rf FiraCode FiraCode.zip squashfs-root nvim.appimage
+
+printC "Installed NvChad\n" $GREEN
