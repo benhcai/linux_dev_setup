@@ -2,10 +2,7 @@
 :'
 A post-install script for Ubuntu to install developer tools
 To download the file, run:
-sudo apt update && \
-sudo apt upgrade && \
-sudo apt install curl && \
-curl -LO https://raw.githubusercontent.com/code0312/linux_dev_setup/main/ubuntu_setup.sh && \
+wget https://raw.githubusercontent.com/code0312/linux_dev_setup/main/ubuntu_setup.sh && \
 chmod +x ubuntu_setup.sh
 '
 
@@ -35,7 +32,10 @@ export LESS="$LESS -Q"
 
 printC "Updating and installing apps... \n" $CYAN && \
 sudo apt update && \
-sudo apt upgrade 
+sudo apt upgrade
+
+printC "Installing curl... \n" $CYAN && \
+sudo apt install curl
 
 printC "Installing git... \n" $CYAN && \
 sudo apt install git && \
