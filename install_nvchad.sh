@@ -42,3 +42,6 @@ printC "Cleaning up... \n" $CYAN && \
 rm -rf FiraCode FiraCode.zip squashfs-root nvim.appimage
 
 printC "Installed NvChad\n" $GREEN
+
+# Run initial setup in new bash (ensure npm running)
+exec bash -c 'nvim'
