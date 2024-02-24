@@ -3,24 +3,24 @@
 source printC.sh
 
 # Install git and Github CLI
-printC "Installing git... \n" $CYAN && \
+printC $CYAN "Installing git... \n" && \
 sudo apt install git && \
-printC "Installing gh... \n" $CYAN && \
+printC $CYAN "Installing gh... \n" && \
 sudo apt install gh && \
 
 ## Setup Git
-printC "Setting up Git... \n" $CYAN
+printC $CYAN "Setting up Git... \n"
 
-printC "Enter Git name: " $BLUE
+printC $BLUE "Enter Git name: "
 read gitName && \
 git config --global user.name "$gitName"
-printC "Enter Git email: " $BLUE
+printC $BLUE "Enter Git email: "
 read gitEmail && \
 git config --global user.email "$gitEmail"
-printC "Git configured for $gitName, $gitEmail \n" $GREEN
+printC $GREEN "Git configured for $gitName, $gitEmail \n"
 
 ## Setup Github CLI
-printC "Setting up gh auth... \n" $CYAN
+printC $CYAN "Setting up gh auth... \n"
 gh auth login
 
 printC "Git and github CLI setup completed."
