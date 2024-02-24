@@ -21,9 +21,7 @@ sudo systemctl daemon-reload && \
 
 sudo systemctl start mongod && \
 
-echo "THe value of $GREEN is what \n"
-echo $GREEN
-
+# Grep with color the status of mongod
 sudo systemctl status mongod | grep "mongod.service" -A 5 | GREP_COLORS='ms=32' grep --color=always 'active' -A 5 -B 5
 
 wait
