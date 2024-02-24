@@ -46,8 +46,8 @@ printC "Installed NvChad\n" $GREEN
 # Run initial setup in new bash (ensure npm running), skip if npm not found. Try opening a new terminal.
 NPMVER=$(npm -v)
 if [ -n "${NPMVER} ]; then
-  echo "Found NPM $NPMVER"
+  printC $GREEN "Found NPM $NPMVER \n"
   exec bash -c 'nvim'
 else
-  echo "No NPM found, try opening in a new terminal"
+  printC $RED "No NPM found, try opening in a new terminal \n"
 fi
