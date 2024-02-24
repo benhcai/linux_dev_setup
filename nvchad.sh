@@ -43,5 +43,11 @@ rm -rf FiraCode FiraCode.zip squashfs-root nvim.appimage
 
 printC "Installed NvChad\n" $GREEN
 
-# Run initial setup in new bash (ensure npm running)
-exec bash -c 'nvim'
+# Run initial setup in new bash (ensure npm running), skip if npm not found. Try opening a new terminal.
+NPMVER=$(npm -v)
+if [ -n "${NPMVER} ]; then
+  echo "Found NPM $NPMVER"
+  exec bash -c 'nvim'
+else
+  echo "No NPM found, try opening in a new terminal"
+fi
