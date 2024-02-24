@@ -19,12 +19,12 @@ echo "set bell-style none" | sudo tee -a /etc/inputrc > /dev/null
 export LESS="$LESS -Q"
 
 ## Main apps
-printC "Installing curl... \n" $CYAN && \
+printC $CYAN "Installing curl... \n" && \
 sudo apt install curl
 
-printC "Installing git... \n" $CYAN && \
+printC $CYAN "Installing git... \n" && \
 sudo apt install git && \
-printC "Installing neovim... \n" $CYAN && \
+printC $CYAN "Installing neovim... \n" && \
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage && \
 chmod u+x nvim.appimage && \
 ./nvim.appimage --appimage-extract && \
@@ -32,23 +32,23 @@ chmod u+x nvim.appimage && \
 ### Optional: exposing nvim globally.
 sudo mv squashfs-root / && \
 sudo ln -s /squashfs-root/AppRun /usr/bin/nvim && \
-printC "Cleaning up... \n" $CYAN && \
+printC $CYAN "Cleaning up... \n" && \
 rm -rf FiraCode FiraCode.zip squashfs-root nvim.appimage
 # Install node, nvm, npm
 source ./node.sh && \
-printC "Installing yarn... \n" $CYAN && \
+printC $CYAN "Installing yarn... \n" && \
 npm install --global yarn && \
-printC "Installed yarn version: " $GREEN && \
+printC $GREEN "Installed yarn version: " && \
 yarn --version && \
-printC "Installing tsc... \n" $CYAN && \
+printC $CYAN "Installing tsc... \n" && \
 sudo apt install node-typescript && \
-printC "Installing snapd... \n" $CYAN && \
+printC $CYAN "Installing snapd... \n" && \
 sudo apt install snapd && \
-printC "Installing vscode... \n" $CYAN && \
+printC $CYAN "Installing vscode... \n" && \
 sudo snap install code --classic && \
 
 
 ## Setup Git and Github CLI
 source ./git_gh.sh
 
-printC "Setup complete. \n" $GREEN
+printC $GREEN "Setup complete. \n"
