@@ -45,7 +45,7 @@ fi
 
 # Install Snap apps
 read -p "Install Snap apps? (y/N): " res
-if [[ $res != "y"]]; then
+if [[ $res != "y" ]]; then
   printC "Installing notion... \n" $CYAN && \
   sudo snap install notion-snap
   printC "Installing zoom-client... \n" $CYAN && \
