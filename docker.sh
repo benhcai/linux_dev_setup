@@ -2,12 +2,12 @@
 
 source ./printC.sh
 
-printC "Removing old Docker files... \n" $CYAN && \
+printC $CYAN "Removing old Docker files... \n" && \
 sudo apt-get remove docker docker-engine docker.io containerd runc ; \
 
-printC "Installing Docker Engine, containerd and Compose... \n" $CYAN && \
+printC $CYAN "Installing Docker Engine, containerd and Compose... \n" && \
 
-printC "Installing using the repository and verifying... \n" $BLUE && \
+printC $BLUE "Installing using the repository and verifying... \n" && \
 sudo apt-get update && \
 sudo apt-get install ca-certificates curl gnupg lsb-release && \
 sudo mkdir -p /etc/apt/keyrings && \
@@ -17,7 +17,7 @@ echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null && \
 
-printC "Installing docker files... \n" $BLUE && \
+printC $BLUE "Installing docker files... \n" && \
 sudo apt-get update && \
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin && \
 sudo service docker start && \
@@ -27,9 +27,9 @@ newgrp docker ; \
 sudo systemctl enable docker.service && \
 sudo systemctl enable containerd.service && \
 
-printC "Docker and Containerd enabled. \n" $GREEN && \
+printC $GREEN "Docker and Containerd enabled. \n" && \
 
-printC "Configuring log rotation... \n" $BLUE && \
+printC $BLUE "Configuring log rotation... \n" && \
 (cat << EOF | sudo tee /etc/docker/daemon.json
 {
   "log-driver": "json-file",
@@ -42,7 +42,7 @@ EOF
 ) > /dev/null && \
 ## Manual systemd edit docker.service
 
-printC "Configuring remote access with systemd unit file... \n" $BLUE && \
+printC $BLUE "Configuring remote access with systemd unit file... \n" && \
 sudo mkdir -p /etc/systemd/system/docker.service.d/ && \
 sudo touch /etc/systemd/system/docker.service.d/override.conf && \
 (cat << EOF | sudo tee /etc/systemd/system/docker.service.d/override.conf
@@ -54,10 +54,10 @@ EOF
 sudo systemctl daemon-reload && \
 sudo systemctl restart docker.service
 
-printC "Installing net-tools... \n" $CYAN && \
+printC $CYAN "Installing net-tools... \n" && \
 sudo apt install net-tools && \
 
-printC "Dockerd netstat status: \n" $BLUE && \
+printC $BLUE "Dockerd netstat status: \n" && \
 sudo netstat -lntp | grep dockerd
 
 wait
