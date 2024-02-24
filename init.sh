@@ -4,12 +4,12 @@
 source <(curl -s https://raw.githubusercontent.com/benhcai/linux_dev_setup/main/printC.sh)
 
 # Update packages
-printC "Updating and installing apps... \n" $CYAN && \
+printC $CYAN "Updating and installing apps... \n" && \
 sudo apt update && \
 sudo apt upgrade
 
 # Get git
-printC "Installing git...\n" $CYAN
+printC $CYAN "Installing git...\n"
 sudo apt install git
 
 # download repo
