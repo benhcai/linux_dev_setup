@@ -6,53 +6,53 @@ source ./printC.sh
 
 read -p "Install NvChad? (y/N): " res
 if [[ $res = "y" ]]; then
-  printC "Installing NvChad... \n" $CYAN && \
+  printC $CYAN "Installing NvChad... \n" && \
   source ./nvchad.sh
 else
   echo $res;
-  printC "Skipping NvChad... \n" $CYAN
+  printC $CYAN "Skipping NvChad... \n"
 fi
 
 ## Install and setup docker
 
 read -p "Install docker? (y/N): " res
 if [[ $res = "y" ]]; then
-  printC "Installing docker... \n" $CYAN && \
+  printC $CYAN "Installing docker... \n" && \
   source ./docker.sh
 else
   echo $res;
-  printC "Skipping docker... \n" $CYAN
+  printC $CYAN "Skipping docker... \n"
 fi
 
 # Install DBMS
 
 read -p "Install PostGres? (y/N): " res
 if [[ $res == "y" ]]; then
-  printC "Installing PostGres... \n" $CYAN && \
+  printC $CYAN "Installing PostGres... \n" && \
   source ./postgresh.sh
 else
-  printC "Skipping PostGres... \n" $CYAN
+  printC $CYAN "Skipping PostGres... \n"
 fi
 
 ## Install MongoDb
 read -p "Install MongoDb? (y/N): " res
 if [[ $res == "y" ]]; then
-  printC "Installing MongoDb... \n" $CYAN && \
+  printC $CYAN "Installing MongoDb... \n" && \
   source ./mongod.sh
 else
-  printC "Skipping MongoDb... \n" $CYAN
+  printC $CYAN "Skipping MongoDb... \n"
 fi
 
 # Install Snap apps
 read -p "Install Snap apps? (y/N): " res
 if [[ $res != "y" ]]; then
-  printC "Installing notion... \n" $CYAN && \
+  printC $CYAN "Installing notion... \n" && \
   sudo snap install notion-snap
-  printC "Installing zoom-client... \n" $CYAN && \
+  printC $CYAN "Installing zoom-client... \n" && \
   sudo snap install zoom-client && \
-  printC "Installing slack... \n" $CYAN && \
+  printC $CYAN "Installing slack... \n" && \
   sudo snap install slack && \
-  printC "End of additional installs \n" $CYAN
+  printC $CYAN "End of additional installs \n"
 else
   exit 1
 fi
