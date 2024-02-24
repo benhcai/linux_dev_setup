@@ -7,7 +7,7 @@ export RED='\033[0;91m'
 export NC='\033[0m'
 
 function printC {
-    local STR=$1
-    local COLOR=$2
+    local COLOR=$1
+    local STR=$2
     echo -ne $COLOR$STR$NC 
 }
