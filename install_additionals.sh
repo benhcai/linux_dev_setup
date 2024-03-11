@@ -4,7 +4,8 @@ source ./printC.sh
 
 ## Install NvChad
 
-read -p "Install NvChad? (y/N): " res
+printC $CYAN "Install NvChad? (y/N): "
+read  res
 if [[ $res = "y" ]]; then
   printC $CYAN "Installing NvChad... \n" && \
   source ./nvchad.sh
@@ -15,7 +16,8 @@ fi
 
 ## Install and setup docker
 
-read -p "Install docker? (y/N): " res
+printC $CYAN "Install docker? (y/N): "
+read res
 if [[ $res = "y" ]]; then
   printC $CYAN "Installing docker... \n" && \
   source ./docker.sh
@@ -26,7 +28,8 @@ fi
 
 # Install DBMS
 
-read -p "Install PostGres? (y/N): " res
+printC $CYAN "Install PostGres? (y/N): "
+read res
 if [[ $res == "y" ]]; then
   printC $CYAN "Installing PostGres... \n" && \
   source ./postgresh.sh
@@ -35,7 +38,8 @@ else
 fi
 
 ## Install MongoDb
-read -p "Install MongoDb? (y/N): " res
+printC $CYAN "Install MongoDb? (y/N): "
+read res
 if [[ $res == "y" ]]; then
   printC $CYAN "Installing MongoDb... \n" && \
   source ./mongod.sh
@@ -44,10 +48,11 @@ else
 fi
 
 # Install Snap apps
-read -p "Install Snap apps? (y/N): " res
-if [[ $res != "y" ]]; then
+printC $CYAN "Install Snap apps? (y/N): "
+read res
+if [[ $res == "y" ]]; then
   printC $CYAN "Installing notion... \n" && \
-  sudo snap install notion-snap
+  sudo snap install notion-snap-reborn
   printC $CYAN "Installing zoom-client... \n" && \
   sudo snap install zoom-client && \
   printC $CYAN "Installing slack... \n" && \
