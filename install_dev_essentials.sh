@@ -42,6 +42,10 @@ printC $GREEN "Installed yarn version: " && \
 yarn --version && \
 printC $CYAN "Installing tsc... \n" && \
 sudo apt install node-typescript && \
+printC $CYAN "Installing pip... \n" && \
+source./python-pip.sh && \
+printC $CYAN "Installing jupyter labs... \n" && \
+pip install jupyterlab && \
 printC $CYAN "Installing snapd... \n" && \
 sudo apt install snapd && \
 printC $CYAN "Installing vscode... \n" && \
