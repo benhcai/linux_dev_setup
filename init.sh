@@ -26,6 +26,7 @@ sudo apt install git
 # download repo
 git clone https://github.com/benhcai/linux_dev_setup.git .
 cd src
+ls -la
 
 printC $CYAN "Install Dev Essentials? (y/N): "
 read res
