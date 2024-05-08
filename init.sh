@@ -25,8 +25,8 @@ sudo apt install git && \
 
 # download repo
 git init .
-git remote add origin https://github.com/benhcai/linux_dev_setup.git
 git checkout -b main
+git remote add origin https://github.com/benhcai/linux_dev_setup.git
 git pull origin main
 cd src
 ls -la
