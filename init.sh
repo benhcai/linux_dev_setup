@@ -5,6 +5,7 @@ To download the file, run:
 
 Download and run this file to initiate installer for
 Linux Dev Essentials and Optional Apps.
+mkdir linux_dev_setup && cd linux_dev_setup
 wget https://raw.githubusercontent.com/benhcai/linux_dev_setup/main/init.sh && \
 chmod +x init.sh
 '
@@ -23,8 +24,8 @@ printC $CYAN "Installing git...\n"
 sudo apt install git
 
 # download repo
-git clone https://github.com/benhcai/linux_dev_setup.git
-cd linux_dev_setup/src
+git clone https://github.com/benhcai/linux_dev_setup.git .
+cd src
 
 printC $CYAN "Install Dev Essentials? (y/N): "
 read res
@@ -45,6 +46,3 @@ else
   echo $res;
   printC $BROWN "Skipping Optional Apps... \n"
 fi
-
-printC $GREEN "Cleaning up files. \n" && \
-rm ../../init.sh
