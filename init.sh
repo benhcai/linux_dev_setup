@@ -17,16 +17,16 @@ source <(curl -s https://raw.githubusercontent.com/benhcai/linux_dev_setup/main/
 # Update packages
 printC $CYAN "Updating and installing apps... \n" && \
 sudo apt update && \
-sudo apt upgrade
+sudo apt upgrade && \
 
 # Get git
 printC $CYAN "Installing git...\n"
-sudo apt install git
+sudo apt install git && \
 
 # download repo
-git clone https://github.com/benhcai/linux_dev_setup.git .
-cd src
-ls -la
+git clone https://github.com/benhcai/linux_dev_setup.git . && \
+cd src && \
+ls -la && \
 
 printC $CYAN "Install Dev Essentials? (y/N): "
 read res
