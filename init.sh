@@ -26,8 +26,8 @@ git config --global init.defaultBranch main && \
 
 # download repo
 git init .
-git checkout -b main
 git remote add origin https://github.com/benhcai/linux_dev_setup.git
+git reset --hard origin/main
 git pull origin main
 cd src
 ls -la
