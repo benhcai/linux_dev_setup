@@ -16,9 +16,9 @@ function printC {
     echo -ne $COLOR$STR$NC 
 }
 
-for i in {0..200}
-do
-    C="\033[0;${i}m"
-    STR="$i hello all \n"
-    echo -ne $C$STR$NC 
-done
+# for i in {0..200}
+# do
+#     C="\033[0;${i}m"
+#     STR="$i hello all \n"
+#     echo -ne $C$STR$NC 
+# done
