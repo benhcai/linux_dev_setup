@@ -13,36 +13,21 @@ set -e
 source printC.sh
 
 # Configs
-## Turn off terminal bell
-echo "set bell-style none" | sudo tee -a /etc/inputrc > /dev/null
-## Turn off LESS (man) bell
-export LESS="$LESS -Q"
+source ./change_configs.sh
 
 ## Main apps
-printC $CYAN "Installing curl... \n" && \
-sudo apt install curl
-
-printC $CYAN "Installing git... \n" && \
-sudo apt install git && \
-printC $CYAN "Installing neovim... \n" && \
+source ./apps/install_curl.sh && \
+source ./apps/install_git.sh && \
 source ./apps/install_neovim.sh && \
-# Install node, nvm, npm
-source ./apps/node.sh && \
-printC $CYAN "Installing yarn... \n" && \
+source ./apps/install_node.sh && \
 source ./apps/install_yarn && \
-printC $CYAN "Installing tsc... \n" && \
 source ./apps/install_typescript && \
-printC $CYAN "Installing pip... \n" && \
-source./apps/python-pip.sh && \
-printC $CYAN "Installing jupyter labs... \n" && \
-source ./apps/install_jupyter_notebooks && \
-printC $CYAN "Installing snapd... \n" && \
+source ./apps/install_python-pip.sh && \
+source ./apps/install_jupyter_labs && \
 source ./apps/install_snap && \
-printC $CYAN "Installing vscode... \n" && \
 source ./apps/install_vscode && \
 
-
 ## Setup Git and Github CLI
-source ./apps/git_gh.sh
+source ./apps/setup_git_gh.sh
 
 printC $GREEN "Setup complete. \n"

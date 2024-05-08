@@ -1,4 +1,5 @@
 #!/bin/bash
+
 CONFIG_FILE=$(ls /etc/netplan | head -n 1)
 
 read -p "Network interface: " ni

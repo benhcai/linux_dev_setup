@@ -7,3 +7,4 @@ Automated setup script for common dev tools. Including:
 * vscode
 * dbs (pg, mongo)
 * docker
+* python

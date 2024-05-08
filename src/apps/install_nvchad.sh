@@ -3,6 +3,7 @@
 curr_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 source "${curr_dir}/../printC.sh"
 
+printC $CYAN "Installing NvChad... \n" && \
 printC $CYAN "NvChad setup and install...\n" && \
 
 printC $BLUE "Installing font...\n" && \

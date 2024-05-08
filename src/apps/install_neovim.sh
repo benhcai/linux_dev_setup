@@ -3,6 +3,7 @@
 curr_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 source "${curr_dir}/../printC.sh"
 
+printC $CYAN "Installing neovim... \n" && \
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage && \
 chmod u+x nvim.appimage && \
 ./nvim.appimage --appimage-extract && \

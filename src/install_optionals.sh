@@ -7,11 +7,19 @@ source ./printC.sh
 printC $CYAN "Install NvChad? (y/N): "
 read  res
 if [[ $res = "y" ]]; then
-  printC $CYAN "Installing NvChad... \n" && \
-  source ./apps/nvchad.sh
+  source ./apps/install_nvchad.sh
 else
   echo $res;
   printC $BROWN "Skipping NvChad... \n"
+fi
+
+printC $CYAN "Install Java JDK? (y/N): "
+read  res
+if [[ $res = "y" ]]; then
+  source ./apps/install_java_jdk.sh
+else
+  echo $res;
+  printC $BROWN "Skipping Java... \n"
 fi
 
 ## Install and setup docker
@@ -19,8 +27,7 @@ fi
 printC $CYAN "Install docker? (y/N): "
 read res
 if [[ $res = "y" ]]; then
-  printC $CYAN "Installing docker... \n" && \
-  source ./apps/docker.sh
+  source ./apps/install_docker.sh
 else
   echo $res;
   printC $BROWN "Skipping docker... \n"
@@ -31,8 +38,7 @@ fi
 printC $CYAN "Install PostGres? (y/N): "
 read res
 if [[ $res == "y" ]]; then
-  printC $CYAN "Installing PostGres... \n" && \
-  source ./apps/postgres.sh
+  source ./apps/install_postgress.sh
 else
   printC $BROWN "Skipping PostGres... \n"
 fi
@@ -41,8 +47,7 @@ fi
 printC $CYAN "Install MongoDb? (y/N): "
 read res
 if [[ $res == "y" ]]; then
-  printC $CYAN "Installing MongoDb... \n" && \
-  source ./apps/mongod.sh
+  source ./apps/install_mongo.sh
 else
   printC $BROWN "Skipping MongoDb... \n"
 fi
@@ -57,7 +62,7 @@ if [[ $res == "y" ]]; then
   sudo snap install zoom-client && \
   printC $CYAN "Installing slack... \n" && \
   sudo snap install slack && \
-  printC $CYAN "End of additional installs \n"
+  printC $GREEN "Finished installing snap apps. \n"
 else
   exit 1
 fi

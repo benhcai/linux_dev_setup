@@ -21,7 +21,7 @@ git config --global user.email "$gitEmail"
 printC $GREEN "Git configured for $gitName, $gitEmail \n"
 
 ## Setup Github CLI
-printC $CYAN "Setting up gh auth... \n"
+printC $CYAN "Setting up Github (sgh) auth... \n"
 gh auth login
 
 printC "Git and github CLI setup completed."

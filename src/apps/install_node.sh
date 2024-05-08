@@ -3,6 +3,7 @@
 curr_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 source "${curr_dir}/../printC.sh"
 
+# Install node, nvm, npm
 printC $CYAN "Removing existing NVM and Node... \n" && \
 rm -Rf ~/.npm ~/.nvm && \
 printC $CYAN "Installing NVM... \n" && \

@@ -3,6 +3,7 @@
 curr_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 source "${curr_dir}/../printC.sh"
 
+printC $CYAN "Installing PostGres... \n" && \
 ## Create the file repository configuration:
 sudo sh -c 'echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 ## Import the repository signing key:
