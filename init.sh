@@ -16,4 +16,14 @@ sudo apt install git
 git clone https://github.com/benhcai/linux_dev_setup.git
 cd linux_dev_setup/src
 
-source ./install_dev_essentials.sh
+printC $CYAN "Installing Dev Essentials... "
+source ./install_dev_essentials.sh && \
+printC $CYAN "Install Optional Apps? (y/N): "
+read  res
+if [[ $res = "y" ]]; then
+  printC $CYAN "Installing Optional Apps... \n" && \
+  source ./install_optionals.sh
+else
+  echo $res;
+  printC $BROWN "Skipping Optional Apps... \n"
+fi

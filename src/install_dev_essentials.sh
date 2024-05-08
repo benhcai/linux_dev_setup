@@ -25,34 +25,24 @@ sudo apt install curl
 printC $CYAN "Installing git... \n" && \
 sudo apt install git && \
 printC $CYAN "Installing neovim... \n" && \
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage && \
-chmod u+x nvim.appimage && \
-./nvim.appimage --appimage-extract && \
-./squashfs-root/AppRun --version && \
-### Optional: exposing nvim globally.
-sudo mv squashfs-root / && \
-sudo ln -s /squashfs-root/AppRun /usr/bin/nvim && \
-printC $CYAN "Cleaning up... \n" && \
-rm -rf FiraCode FiraCode.zip squashfs-root nvim.appimage
+source ./apps/install_neovim.sh && \
 # Install node, nvm, npm
-source ./src/node.sh && \
+source ./apps/node.sh && \
 printC $CYAN "Installing yarn... \n" && \
-npm install --global yarn && \
-printC $GREEN "Installed yarn version: " && \
-yarn --version && \
+source ./apps/install_yarn && \
 printC $CYAN "Installing tsc... \n" && \
-sudo apt install node-typescript && \
+source ./apps/install_typescript && \
 printC $CYAN "Installing pip... \n" && \
-source./src/python-pip.sh && \
+source./apps/python-pip.sh && \
 printC $CYAN "Installing jupyter labs... \n" && \
-pip install jupyterlab && \
+source ./apps/install_jupyter_notebooks && \
 printC $CYAN "Installing snapd... \n" && \
-sudo apt install snapd && \
+source ./apps/install_snap && \
 printC $CYAN "Installing vscode... \n" && \
-sudo snap install code --classic && \
+source ./apps/install_vscode && \
 
 
 ## Setup Git and Github CLI
-source ./src/git_gh.sh
+source ./apps/git_gh.sh
 
 printC $GREEN "Setup complete. \n"

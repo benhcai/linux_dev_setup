@@ -1,6 +1,7 @@
 #!/bin/bash
 
-source ./printC.sh
+curr_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+source "${curr_dir}/../printC.sh"
 
 printC $CYAN "Removing old Docker files... \n" && \
 sudo apt-get remove docker docker-engine docker.io containerd runc ; \
