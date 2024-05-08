@@ -46,5 +46,5 @@ else
   printC $BROWN "Skipping Optional Apps... \n"
 fi
 
-printC $GREEN "Cleaning up files... \n" && \
+printC $GREEN "Cleaning up files. \n" && \
 rm ../../init.sh
