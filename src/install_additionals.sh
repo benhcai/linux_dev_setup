@@ -8,7 +8,7 @@ printC $CYAN "Install NvChad? (y/N): "
 read  res
 if [[ $res = "y" ]]; then
   printC $CYAN "Installing NvChad... \n" && \
-  source ./nvchad.sh
+  source ./src/nvchad.sh
 else
   echo $res;
   printC $CYAN "Skipping NvChad... \n"
@@ -20,7 +20,7 @@ printC $CYAN "Install docker? (y/N): "
 read res
 if [[ $res = "y" ]]; then
   printC $CYAN "Installing docker... \n" && \
-  source ./docker.sh
+  source ./src/docker.sh
 else
   echo $res;
   printC $CYAN "Skipping docker... \n"
@@ -32,7 +32,7 @@ printC $CYAN "Install PostGres? (y/N): "
 read res
 if [[ $res == "y" ]]; then
   printC $CYAN "Installing PostGres... \n" && \
-  source ./postgresh.sh
+  source ./src/postgresh.sh
 else
   printC $CYAN "Skipping PostGres... \n"
 fi
@@ -42,7 +42,7 @@ printC $CYAN "Install MongoDb? (y/N): "
 read res
 if [[ $res == "y" ]]; then
   printC $CYAN "Installing MongoDb... \n" && \
-  source ./mongod.sh
+  source ./src/mongod.sh
 else
   printC $CYAN "Skipping MongoDb... \n"
 fi

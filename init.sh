@@ -14,6 +14,6 @@ sudo apt install git
 
 # download repo
 git clone https://github.com/benhcai/linux_dev_setup.git
-cd linux_dev_setup
+cd linux_dev_setup/src
 
 source ./install_dev_essentials.sh
