@@ -35,7 +35,7 @@ sudo ln -s /squashfs-root/AppRun /usr/bin/nvim && \
 printC $CYAN "Cleaning up... \n" && \
 rm -rf FiraCode FiraCode.zip squashfs-root nvim.appimage
 # Install node, nvm, npm
-source ./node.sh && \
+source ./src/node.sh && \
 printC $CYAN "Installing yarn... \n" && \
 npm install --global yarn && \
 printC $GREEN "Installed yarn version: " && \
@@ -43,7 +43,7 @@ yarn --version && \
 printC $CYAN "Installing tsc... \n" && \
 sudo apt install node-typescript && \
 printC $CYAN "Installing pip... \n" && \
-source./python-pip.sh && \
+source./src/python-pip.sh && \
 printC $CYAN "Installing jupyter labs... \n" && \
 pip install jupyterlab && \
 printC $CYAN "Installing snapd... \n" && \
@@ -53,6 +53,6 @@ sudo snap install code --classic && \
 
 
 ## Setup Git and Github CLI
-source ./git_gh.sh
+source ./src/git_gh.sh
 
 printC $GREEN "Setup complete. \n"
