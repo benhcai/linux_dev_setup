@@ -22,6 +22,7 @@ sudo apt upgrade && \
 # Get git
 printC $CYAN "Installing git...\n"
 sudo apt install git && \
+git config --global init.defaultBranch main && \
 
 # download repo
 git init .
