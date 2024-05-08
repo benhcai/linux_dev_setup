@@ -24,9 +24,11 @@ printC $CYAN "Installing git...\n"
 sudo apt install git && \
 
 # download repo
-git clone https://github.com/benhcai/linux_dev_setup.git . && \
-cd src && \
-ls -la && \
+git init .
+git remote add origin https://github.com/benhcai/linux_dev_setup.git
+git pull origin main
+cd src
+ls -la
 
 printC $CYAN "Install Dev Essentials? (y/N): "
 read res
