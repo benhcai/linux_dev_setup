@@ -25,10 +25,11 @@ sudo apt install git && \
 git config --global init.defaultBranch main && \
 
 # download repo
-git init . && \
-git remote add origin https://github.com/benhcai/linux_dev_setup.git && \
-git pull origin main && \
-git reset --hard origin/main && \
+# git init . && \
+# git remote add origin https://github.com/benhcai/linux_dev_setup.git && \
+# git pull origin main && \
+# git reset --hard origin/main && \
+https://github.com/benhcai/linux_dev_setup.git && \
 cd src && \
 
 printC $CYAN "Install Dev Essentials? (y/N): "
