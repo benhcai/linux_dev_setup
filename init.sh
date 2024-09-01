@@ -51,3 +51,5 @@ else
   echo $res;
   printC $BROWN "Skipping Optional Apps... \n"
 fi
+
+printC $GREEN "Installation complete."
