@@ -10,7 +10,7 @@ wget https://raw.githubusercontent.com/benhcai/linux_dev_setup/main/init.sh && \
 chmod +x init.sh
 '
 
-# Downlaod function and load into terminal without creating a file
+# Download function and load into terminal without creating a file
 sudo apt install curl
 source <(curl -s https://raw.githubusercontent.com/benhcai/linux_dev_setup/main/src/printC.sh)
 
