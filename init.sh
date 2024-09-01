@@ -30,7 +30,7 @@ git config --global init.defaultBranch main && \
 # git pull origin main && \
 # git reset --hard origin/main && \
 git clone https://github.com/benhcai/linux_dev_setup.git && \
-cd src && \
+cd linux_dev_setup/src && \
 
 printC $CYAN "Install Dev Essentials? (y/N): "
 read res
